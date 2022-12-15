@@ -1,0 +1,12 @@
+#container{
+    margin:auto;
+    width:35%;
+    padding:10px;
+    background-color: #FAf0DC;
+}
+
+@media screen and (max-width: 480px) {
+  #container{
+    width:95%
+  }
+}

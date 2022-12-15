@@ -1,0 +1,25 @@
+td{
+    padding:10px;
+}
+
+td:nth-of-type(1){
+    min-width:80%;
+}
+tr{
+    border: 1px dotted;
+    border-radius: 5px;
+    
+}
+
+.cross{
+    text-decoration: line-through;
+}
+
+#newTache{
+    margin:10px;
+}
+
+table{
+    margin:auto;
+    margin:10px;
+}

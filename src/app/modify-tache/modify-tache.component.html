@@ -1,0 +1,16 @@
+<div>
+  <h1>Modifier une tâche existante</h1>
+  <form [formGroup]="notesModForm" novalidate>
+    <div class="form-group">
+      <label class="center-block">Titre:
+        <input class="form-control" formControlName="title"  [(ngModel)]="tache.title">
+      </label>
+      <label class="center-block">Contenu:
+        <textarea class="form-control" formControlName="description" [(ngModel)]="tache.description"></textarea>
+      </label>
+      <button type="submit" id="nouvelle" (click)="modifyTache(tache)">
+            Enregistrer
+      </button>
+    </div>
+  </form>
+</div>

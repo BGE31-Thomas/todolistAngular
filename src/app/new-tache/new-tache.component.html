@@ -1,0 +1,21 @@
+<div>
+    <h1>Créer une nouvelle tâche</h1>
+    <form [formGroup]="notesForm" novalidate>
+      <div class="form-group">
+        
+        <label class="center-block">Titre:
+          <input class="form-control" formControlName="title">
+        </label>
+      
+        
+        <label class="center-block">Contenu:
+          <textarea class="form-control" formControlName="description"></textarea>
+        </label>
+        
+        <button type="submit" id="nouvelle" (click)="addTacheForm()"
+              [disabled]="notesForm.pristine || notesForm.invalid" class="btn btn-success">
+              Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>

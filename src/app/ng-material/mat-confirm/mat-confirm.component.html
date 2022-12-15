@@ -1,0 +1,15 @@
+<div class="confirm-container">
+    <h1 mat-dialog-title>
+        Confirmation de suppression
+    </h1>
+    <div class="visually-hidden">{{id}}</div>
+    <div mat-dialog-content>
+
+         {{ message }}
+    </div>
+    
+    <div mat-dialog-actions style="float:right;margin:20px;">
+        <button mat-button [mat-dialog-close]="{clicked:'Ok'}" (click)="confirmer(id)">Ok</button>
+        <button mat-button [mat-dialog-close]="{clicked:'Cancel'}" (click)="annuler()">Annuler</button>
+    </div>
+</div>
