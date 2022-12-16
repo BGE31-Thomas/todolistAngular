@@ -1,0 +1,33 @@
+<h1>Création d'un utilisateur</h1>
+<form [formGroup]="creationForm">
+    <div class="form-group">
+    
+        <label class="center-block">Nom
+            <input class="form-control" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="f['name'].errors['required']">Une adresse email est requise.</div>
+                <div *ngIf="f['name'].errors['minlength']">Le nom doit contenir au moins deux caractères.</div>
+            </div>
+        </label>
+        <label class="center-block">Email
+            <input class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">Une adresse email est requise.</div>
+                <div *ngIf="f['email'].errors['email']">Le texte saisi n'a pas le format d'une adresse email.</div>
+            </div>
+        </label>
+      
+        <label class="center-block">Password
+            <input class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                <div *ngIf="f['password'].errors['required']">Un mot de passe est requis.</div>
+                <div *ngIf="f['password'].errors['pattern']">Le mot de passe doit contenir au moins 8 caractères, une majuscule, une lettre minuscule, un chiffre et un de ces caractères spéciaux : #?!@$%^&*-</div>
+            </div>
+        </label>
+      
+        <button type="submit" id="nouvelle" class="btn btn-success" (click)="enregistrer()">
+                Enregistrer
+        </button>
+    </div>
+    
+</form>

@@ -1,9 +1,13 @@
+<div class="collapse navbar-collapse">Texte</div>
 <div>
   <h1>Modifier une tâche existante</h1>
   <form [formGroup]="notesModForm" novalidate>
     <div class="form-group">
       <label class="center-block">Titre:
         <input class="form-control" formControlName="title"  [(ngModel)]="tache.title">
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">Le titre est requis</div>
+        </div>
       </label>
       <label class="center-block">Contenu:
         <textarea class="form-control" formControlName="description" [(ngModel)]="tache.description"></textarea>

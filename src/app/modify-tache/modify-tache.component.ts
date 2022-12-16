@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Tache } from '../Tache';
@@ -14,6 +14,7 @@ export class ModifyTacheComponent {
   notesModForm!: FormGroup
   tache = new Tache
   private routeSub: Subscription | undefined
+  submitted=false
 
   constructor(private tacheService: TacheService, private formBuilder :FormBuilder,private route: ActivatedRoute,private router:Router){
     this.createForm()
@@ -40,6 +41,10 @@ export class ModifyTacheComponent {
   }
 
   ngOnInit(){
+    this.submitted = true
+    if (this.notesModForm.invalid) {
+      return;
+    }
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
@@ -53,6 +58,9 @@ export class ModifyTacheComponent {
         });
       }
     }
-    
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.notesModForm.controls;
   }
 }

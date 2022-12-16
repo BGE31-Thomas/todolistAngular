@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { DeleteTacheComponent } from './delete-tache/delete-tache.component';
 import { NgMaterialModule } from './ng-material/ng-material.module';
 import { LoginComponent } from './login/login.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     DeleteTacheComponent,
     LoginComponent,
+    CreateUserComponent,
   
     
   ],

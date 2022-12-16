@@ -38,14 +38,9 @@ export class UserService {
   
    return this.httpClient.post<Utilisateur>(this.API_URL+this.LOGIN, user,options)
       
-   
   }
 
-  getTache(id:number){
-    return this.httpClient.get(this.API_URL+this.ENDPOINT_TACHE+id)
-  }
-
-  addTache(tache:Tache): Observable<Tache> {
+  enregistrement(user:Utilisateur): Observable<Utilisateur> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
    });
@@ -53,39 +48,9 @@ export class UserService {
       headers: headers
    }
   
-   return this.httpClient.post<Tache>(this.API_URL+this.ENDPOINT_TACHES, tache,options)
-      
-   
-  }
-
-  modifyTache(id:number,tache:Tache): Observable<Tache> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-   });
-   let options = {
-      headers: headers
-   }
-  
-   return this.httpClient.put<Tache>(this.API_URL+this.ENDPOINT_TACHE+id, tache,options)
-      
-   
-  }
-
-  deleteTache(id:number){
-  
-   return this.httpClient.delete(this.API_URL+this.ENDPOINT_TACHE+id)
+   return this.httpClient.post<Utilisateur>(this.API_URL+this.ENDPOINT_USERS, user,options)
       
   }
 
-  modifyStatus(id:number,tache:Tache): Observable<Tache> {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-   });
-   let options = {
-      headers: headers
-   }
   
-   return this.httpClient.put<Tache>(this.API_URL+this.ENDPOINT_STATUS+id, tache,options)
-      
-  }
 }

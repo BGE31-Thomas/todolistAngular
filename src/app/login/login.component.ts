@@ -50,4 +50,8 @@ export class LoginComponent {
     return this.loginForm.controls;
   }
 
+  toCreation(){
+    this.router.navigate(['creationUser'])
+  }
+
 }

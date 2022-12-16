@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tache } from '../Tache';
 import { TacheService } from '../tache.service';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NewTacheComponent {
   notesForm!: FormGroup
   tache = new Tache
+  submitted=false
 
   constructor(private tacheService: TacheService, private formBuilder :FormBuilder,private router: Router){
     this.createForm()
@@ -25,6 +26,10 @@ export class NewTacheComponent {
   }
 
   addTacheForm(){
+    this.submitted = true
+    if (this.notesForm.invalid) {
+      return;
+    }
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
@@ -37,7 +42,9 @@ export class NewTacheComponent {
         });
       }
     }
-   
-    
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.notesForm.controls;
   }
 }

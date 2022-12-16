@@ -1,21 +1,24 @@
 <div>
-    <h1>Créer une nouvelle tâche</h1>
-    <form [formGroup]="notesForm" novalidate>
-      <div class="form-group">
-        
-        <label class="center-block">Titre:
-          <input class="form-control" formControlName="title">
-        </label>
+  <div>Texte</div>
+  <h1>Créer une nouvelle tâche</h1>
+  <form [formGroup]="notesForm" novalidate>
+    <div class="form-group">
       
-        
-        <label class="center-block">Contenu:
-          <textarea class="form-control" formControlName="description"></textarea>
-        </label>
-        
-        <button type="submit" id="nouvelle" (click)="addTacheForm()"
-              [disabled]="notesForm.pristine || notesForm.invalid" class="btn btn-success">
-              Enregistrer
-        </button>
-      </div>
-    </form>
-  </div>
+      <label class="center-block">Titre:
+        <input class="form-control" formControlName="title">
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">Le titre est requis</div>
+        </div>
+      </label>
+    
+      
+      <label class="center-block">Contenu:
+        <textarea class="form-control" formControlName="description"></textarea>
+      </label>
+      
+      <button type="submit" id="nouvelle" (click)="addTacheForm()" class="btn btn-success">
+            Enregistrer
+      </button>
+    </div>
+  </form>
+</div>

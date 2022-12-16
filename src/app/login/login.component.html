@@ -13,6 +13,7 @@
         <input class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
         <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
             <div *ngIf="f['password'].errors['required']">Un mot de passe est requis.</div>
+            <div *ngIf="f['password'].errors['email']">Le texte saisi n'est pas au format d'une adresse email.</div>
           </div>
       </label>
       
@@ -20,4 +21,5 @@
             Enregistrer
       </button>
     </div>
-  </form>
+    <a class="link-dark" (click)="toCreation()">Pas de compte ? Inscrivez-vous</a>
+</form>
