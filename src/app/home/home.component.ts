@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SortUtil } from '../SortUtil';
 import { Tache } from '../Tache';
 import { TacheService } from '../tache.service';
-import { Utilisateur } from '../Utilisateur';
+
 
 @Component({
   selector: 'app-home',
@@ -51,27 +52,28 @@ export class HomeComponent {
     if (userString){
       let user = JSON.parse(userString)
       if (user){
-        this.tacheService.modifyStatus(user.id,tache.id,tache).subscribe()
+        this.tacheService.modifyStatus(user.id,tache.id,tache).subscribe(
+          data=>{
+            this.geTachesByStatus()
+          })
       }
     }
     
   }
   ngOnInit(){
+    this.geTachesByStatus()
+  } 
+
+  geTachesByStatus(){
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
       if (user){
         this.tacheService.getTaches(user.id).subscribe(datas =>{
           this.taches = datas as Tache[];
+          SortUtil.sortByProperty(this.taches,"status","ASC")
         })
       }
-    }
-    
-    
-    
-    
-    
-    
-   
+    } 
   }
 }
