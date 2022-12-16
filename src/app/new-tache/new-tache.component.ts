@@ -18,6 +18,7 @@ export class NewTacheComponent {
     this.createForm()
   }
 
+  //Crée le formulaire
   createForm(){
     this.notesForm = this.formBuilder.group({
       title:['',Validators.required],
@@ -25,6 +26,12 @@ export class NewTacheComponent {
     })
   }
 
+  //Renvoie vers la liste de tâches
+  toList(){
+    this.router.navigate(['taches'])
+  }
+
+  //Permet d'ajouter une nouvelle tâche
   addTacheForm(){
     this.submitted = true
     if (this.notesForm.invalid) {
@@ -47,4 +54,6 @@ export class NewTacheComponent {
   get f(): { [key: string]: AbstractControl } {
     return this.notesForm.controls;
   }
+
+ 
 }

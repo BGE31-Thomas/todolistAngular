@@ -19,19 +19,33 @@ export class HomeComponent {
     
   }
 
+  //Rnvoie vers le formulaire pour créer une nouvelle tâche
   toAddTache(){
     this.route.navigate(['add'])
   }
   
+  //Renvoie vers le formulaire pour modifier une tâche (tâche récupérée du formulaire)
   toModifyTache(tache:Tache){
-    console.log(tache)
     this.route.navigate(['modify',tache.id])
   }
   
+  //Renvoie vers le template de suppression
   toDeleteTache(tache: Tache) {
     this.route.navigate(['delete',tache.id,tache.title])
   }
 
+  //Renvoie vers le template pour modifier une tâche (tâche récupérée du formulaire)
+  toReadTache(tache:Tache){
+    let userString= localStorage.getItem("user")
+    if (userString){
+      let user = JSON.parse(userString)
+      if (user){
+        this.route.navigate(['read',tache.id])
+      }
+    }
+  }
+
+  //MOdifie le statut de la tâche (tâche cochée)
   modifyStatus(tache:Tache){
     let userString= localStorage.getItem("user")
     if (userString){
@@ -46,11 +60,9 @@ export class HomeComponent {
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
-      console.log(user)
       if (user){
         this.tacheService.getTaches(user.id).subscribe(datas =>{
           this.taches = datas as Tache[];
-          console.log(datas);
         })
       }
     }

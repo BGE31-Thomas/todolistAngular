@@ -17,17 +17,17 @@ export class LoginComponent {
     this.createForm()
   }
 
+  //Crée le formulaire
   createForm(){
     this.loginForm = this.formBuilder.group({
-    /*   name:new FormControl('',[Validators.required]), */
       email:new FormControl('',[Validators.required,Validators.email]),
       password:new FormControl('',[Validators.required])
     })
   }
 
+  //Permet de se connecter
   connexion(){
     this.submitted = true
-    console.log(this.loginForm.invalid)
     if (this.loginForm.invalid) {
       return;
     }
@@ -46,10 +46,12 @@ export class LoginComponent {
     )
   }
 
+  //Renvoie les propriétés du formulaire
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
 
+  //Renvoie vers le formulaire de création d'utilisateur
   toCreation(){
     this.router.navigate(['creationUser'])
   }

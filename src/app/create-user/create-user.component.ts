@@ -17,6 +17,7 @@ export class CreateUserComponent {
     this.createForm()
   }
 
+  //Crée le formulaire
   createForm(){
     this.creationForm = this.formBuilder.group({
       name:new FormControl('',[Validators.required,Validators.minLength(2)]),
@@ -25,6 +26,7 @@ export class CreateUserComponent {
     })
   }
 
+  //Enregistre les données saisies comme utilisateur
   enregistrer(){
     this.submitted = true
     if (this.creationForm.invalid) {
@@ -45,12 +47,8 @@ export class CreateUserComponent {
     )
   }
 
+  //Permet d'accéder aux propriétés du formulaire
   get f(): { [key: string]: AbstractControl } {
     return this.creationForm.controls;
   }
-
-  toCreation(){
-    this.router.navigate(['creationUser'])
-  }
-
 }

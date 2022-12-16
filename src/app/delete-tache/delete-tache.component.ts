@@ -17,7 +17,8 @@ export class DeleteTacheComponent {
   constructor(private tacheService: TacheService, private route: ActivatedRoute,private router:Router, private dialog: MatDialog){
     
   }
-  
+
+  //Crée l'alerte (id de la tâche,titre de la tâche)
   confirmDialog(ident:number,title:String) {
     const ref: MatDialogRef<MatConfirmComponent> =  
     this.dialog.open(MatConfirmComponent, {
@@ -31,6 +32,7 @@ export class DeleteTacheComponent {
     });
   }
  
+  //Se lance à la création du composant
   ngOnInit(){
     let userString= localStorage.getItem("user")
     if (userString){

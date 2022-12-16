@@ -20,6 +20,7 @@ export class MatConfirmComponent {
       this.message = data ? data.message : '';
     }
 
+    //Supprime la tâche (id de la tâche à supprimer)
     confirmer(id:number){
       let userString= localStorage.getItem("user")
       if (userString){
@@ -33,6 +34,7 @@ export class MatConfirmComponent {
      
     }
 
+    //Renvoie vers la liste de tâches
     annuler(){
       this.router.navigate(['taches'])
     }

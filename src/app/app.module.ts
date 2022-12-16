@@ -13,6 +13,8 @@ import { DeleteTacheComponent } from './delete-tache/delete-tache.component';
 import { NgMaterialModule } from './ng-material/ng-material.module';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ReadTacheComponent } from './read-tache/read-tache.component';
+import { LogoutComponent } from './logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     DeleteTacheComponent,
     LoginComponent,
     CreateUserComponent,
+    ReadTacheComponent,
+    LogoutComponent,
   
     
   ],

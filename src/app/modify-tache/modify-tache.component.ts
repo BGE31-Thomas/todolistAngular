@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Tache } from '../Tache';
@@ -20,14 +20,25 @@ export class ModifyTacheComponent {
     this.createForm()
   }
 
+  //Crée le formulaire
   createForm(){
     this.notesModForm = this.formBuilder.group({
-      title:['',Validators.required],
-      description:['']
+      title:['',[Validators.required]],
+      description:new FormControl([''])
     })
   }
 
+  //Renvoie vers la liste de tâches
+  toList(){
+    this.router.navigate(['taches'])
+  }
+
+  //Modifie la tâche (tâche récupérée du formulaire)
   modifyTache(tache:Tache){
+    this.submitted = true
+    if (this.notesModForm.invalid) {
+      return;
+    }
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
@@ -40,11 +51,9 @@ export class ModifyTacheComponent {
     
   }
 
+  //Se lance à initialisation du composant
   ngOnInit(){
-    this.submitted = true
-    if (this.notesModForm.invalid) {
-      return;
-    }
+  
     let userString= localStorage.getItem("user")
     if (userString){
       let user = JSON.parse(userString)
@@ -60,6 +69,7 @@ export class ModifyTacheComponent {
     }
   }
 
+  //Renvoie les propriétés du formulaire
   get f(): { [key: string]: AbstractControl } {
     return this.notesModForm.controls;
   }

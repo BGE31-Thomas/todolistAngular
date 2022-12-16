@@ -6,14 +6,17 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ModifyTacheComponent } from './modify-tache/modify-tache.component';
 import { NewTacheComponent } from './new-tache/new-tache.component';
+import { ReadTacheComponent } from './read-tache/read-tache.component';
 
+//Routes utilisées
 const routes:  Routes = [
   {path: '',component:LoginComponent},
   {path: 'taches',component:HomeComponent},
   {path: 'add',component:NewTacheComponent},
   {path: 'modify/:id', component:ModifyTacheComponent},
   {path: 'delete/:id/:titre', component:DeleteTacheComponent},
-  {path:"creationUser",component:CreateUserComponent}
+  {path:"creationUser",component:CreateUserComponent},
+  {path:"read/:id",component:ReadTacheComponent}
 ]
 
 
